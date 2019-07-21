@@ -6,11 +6,12 @@
 /*   By: sengle <sengle@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:11:38 by sengle            #+#    #+#             */
-/*   Updated: 2019/07/20 10:38:02 by sengle           ###   ########.fr       */
+/*   Updated: 2019/07/21 09:58:34 by sengle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include "sudoku.h"
 
 /*
 **	sudoku called with a two dimensional int array representing initial board
@@ -41,8 +42,10 @@
 **		as: most_populated_row(int **board), most_populated_col(int **board),
 **
 */
+
 int	solve_sudoku(int **board)
 {
-	int	**temp_board;
-
+	if (board[0][0] == SUCCESS)
+		return (board[0][0]);
+	else return (SUCCESS);
 }

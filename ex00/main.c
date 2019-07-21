@@ -6,13 +6,14 @@
 /*   By: sengle <sengle@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:11:38 by sengle            #+#    #+#             */
-/*   Updated: 2019/07/20 10:29:57 by sengle           ###   ########.fr       */
+/*   Updated: 2019/07/21 10:21:15 by sengle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include "sudoku.h"
 
-void	ft_puts(char *str);
+void	ft_putstr(char *str);
 
 /*
 **	make_sudoku_board(argc, argv) converts argv[1..9] to an int sudoku array.
@@ -78,7 +79,7 @@ int	main(int argc, char **argv)
 	board = make_sudoku_board(argc, argv);
 	if (board == NULL)
 	{
-		ft_puts("Error\n");
+		ft_putstr("Error\n");
 		return (1);
 	}
 	if (solve_sudoku(board))
@@ -88,7 +89,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		ft_puts("Error\n");
+		ft_putstr("Error\n");
 		return (1);
 	}
 }

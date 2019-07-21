@@ -6,7 +6,7 @@
 /*   By: sengle <sengle@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:11:38 by sengle            #+#    #+#             */
-/*   Updated: 2019/07/21 09:07:51 by sengle           ###   ########.fr       */
+/*   Updated: 2019/07/21 10:30:14 by sengle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,16 @@ int	**make_sudoku_board(int argc, char **argv)
 
 	if (argc != 10)
 		return (NULL);
-	row = 0;
 	board = (int **)malloc(ROWS * sizeof(int *));
-	while (row < ROWS)
-		board[row] = (int *)malloc(COLS * sizeof(int));
 	row = 0;
-	col = 0;
 	while (row < ROWS)
-		while (col < COLS) {
+		board[row++] = (int *)malloc(COLS * sizeof(int));
+	row = -1;
+	while (++row < ROWS)
+	{
+		col = -1;
+		while (++col < COLS)
+		{
 			if (argv[row + 1][col] == '.')
 				board[row][col] = 0;
 			else if ('1' <= argv[row + 1][col] && argv[row + 1][col] <= '9')
@@ -50,4 +52,6 @@ int	**make_sudoku_board(int argc, char **argv)
 			else
 				return (NULL);
 		}
+	}
+	return (board);
 }

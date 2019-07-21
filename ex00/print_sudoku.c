@@ -6,7 +6,7 @@
 /*   By: sengle <sengle@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:11:38 by sengle            #+#    #+#             */
-/*   Updated: 2019/07/21 02:18:38 by sengle           ###   ########.fr       */
+/*   Updated: 2019/07/21 10:31:18 by sengle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,22 @@ void	ft_putchar(char c);
 **
 **	A valid board is assumed
 */
+
 void	print_sudoku(int **board)
 {
 	int	row;
 	int	col;
 
-	row = 0;
-	col = 0;
-
-	while (row++ <= 9)
+	row = -1;
+	while (++row < 9)
 	{
-		while (col <= 9)
+		col = -1;
+		while (++col < 9)
 		{
 			if (col > 0)
 				ft_putchar(' ');
 			ft_putchar((char)board[row][col] + '0');
 		}
+		ft_putchar('\n');
 	}
-	ft_putchar('\n');
 }
