@@ -6,24 +6,24 @@
 /*   By: sengle <sengle@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:11:38 by sengle            #+#    #+#             */
-/*   Updated: 2019/07/21 10:21:15 by sengle           ###   ########.fr       */
+/*   Updated: 2019/07/21 12:52:58 by sengle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include "sudoku.h"
 
-void	ft_putstr(char *str);
-
 /*
 **	make_sudoku_board(argc, argv) converts argv[1..9] to an int sudoku array.
 **		It returns NULL if argc != 10 or there is invalid input.
 */
+
 int		**make_sudoku_board(int argc, char **argv);
 
 /*
 **	solve_sudoku called with two dimensional int array containing initial board
 */
+
 int		solve_sudoku(int **board);
 
 /*
@@ -39,6 +39,7 @@ int		solve_sudoku(int **board);
 **	6 9 8 2 5 3 7 4 1
 **	4 7 2 1 6 8 9 3 5
 */
+
 void	print_sudoku(int **board);
 
 /*
@@ -72,6 +73,7 @@ void	print_sudoku(int **board);
 **
 **	main() returns 0 upon success, otherwise 1.
 */
+
 int	main(int argc, char **argv)
 {
 	int	**board;
@@ -79,7 +81,7 @@ int	main(int argc, char **argv)
 	board = make_sudoku_board(argc, argv);
 	if (board == NULL)
 	{
-		ft_putstr("Error\n");
+		write(1, "Error\n", 6);
 		return (1);
 	}
 	if (solve_sudoku(board))
@@ -89,7 +91,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		ft_putstr("Error\n");
+		write(1, "Error\n", 6);
 		return (1);
 	}
 }
