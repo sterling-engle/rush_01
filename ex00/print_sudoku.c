@@ -6,13 +6,12 @@
 /*   By: sengle <sengle@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:11:38 by sengle            #+#    #+#             */
-/*   Updated: 2019/07/21 10:31:18 by sengle           ###   ########.fr       */
+/*   Updated: 2019/07/21 13:11:26 by sengle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-
-void	ft_putchar(char c);
+#include <unistd.h>
+#include "sudoku.h"
 
 /*
 **	print_sudoku(board) outputs the sudoku board solution. For example:
@@ -32,19 +31,21 @@ void	ft_putchar(char c);
 
 void	print_sudoku(int **board)
 {
-	int	row;
-	int	col;
+	int		row;
+	int		col;
+	char	num_char;
 
 	row = -1;
-	while (++row < 9)
+	while (++row < ROWS)
 	{
 		col = -1;
-		while (++col < 9)
+		while (++col < COLS)
 		{
 			if (col > 0)
-				ft_putchar(' ');
-			ft_putchar((char)board[row][col] + '0');
+				write(1, " ", 1);
+			num_char = board[row][col] + '0';
+			write(1, &num_char, 1);
 		}
-		ft_putchar('\n');
+		write(1, "\n", 1);
 	}
 }
