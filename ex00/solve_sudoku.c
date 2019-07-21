@@ -6,12 +6,14 @@
 /*   By: sengle <sengle@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:11:38 by sengle            #+#    #+#             */
-/*   Updated: 2019/07/21 09:58:34 by sengle           ###   ########.fr       */
+/*   Updated: 2019/07/21 14:23:01 by sko              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include <stdlib.h>
 #include "sudoku.h"
+#include <stdio.h>
 
 /*
 **	sudoku called with a two dimensional int array representing initial board
@@ -43,8 +45,61 @@
 **
 */
 
+int	ft_isValidSudoku(int **board)
+{
+	int	*b;
+	int		i;
+	int		j;
+	int		k;
+	int		p;
+	int		check;
+
+	p = 0;
+	b = (int *)malloc((COLS * sizeof(int)));
+	i = 0;
+	// check row, coluum, and 3x3 grid
+	while (i < 3)
+	{
+		j = 0;
+		while (j < COLS)
+		{
+			p = 0;
+			while (p < ROWS)
+				b[p++] = 0;
+			k = 0;
+			while (k < COLS)
+			{
+				check = 0;
+				// check row
+				if (i == 0)
+					check = board[j][k];
+				// check column
+				else if (i == 1)
+					check = board[k][j];
+				// 3x3 grid
+				else
+					check = board[j / COLS * COLS + k / COLS][j % COLS * COLS + k % COLS];
+				if (check == 0)
+				{
+					k++;
+					continue ;
+				}
+				if (b[check - 1] == 1)
+					return (0);
+				b[check - 1] = 1;
+				k++;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
 int	solve_sudoku(int **board)
 {
+	printf("%d\n", ft_isValidSudoku(board));
+	
 	if (board[0][0] == SUCCESS)
 		return (board[0][0]);
 	else return (SUCCESS);
