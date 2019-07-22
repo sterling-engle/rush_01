@@ -6,7 +6,7 @@
 /*   By: sengle <sengle@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:11:38 by sengle            #+#    #+#             */
-/*   Updated: 2019/07/21 12:52:58 by sengle           ###   ########.fr       */
+/*   Updated: 2019/07/21 17:20:11 by sengle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ int		**make_sudoku_board(int argc, char **argv);
 
 /*
 **	solve_sudoku called with two dimensional int array containing initial board
+**		and the number of validated_spaces, which is always 0 initially
 */
 
-int		solve_sudoku(int **board);
+int		solve_sudoku(int **board, int validated_spaces);
 
 /*
 **	print_sudoku(board) outputs the sudoku board solution. For example:
@@ -84,7 +85,7 @@ int	main(int argc, char **argv)
 		write(1, "Error\n", 6);
 		return (1);
 	}
-	if (solve_sudoku(board))
+	if (solve_sudoku(board, 0))
 	{
 		print_sudoku(board);
 		return (0);
