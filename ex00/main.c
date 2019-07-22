@@ -6,7 +6,7 @@
 /*   By: sengle <sengle@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:11:38 by sengle            #+#    #+#             */
-/*   Updated: 2019/07/21 17:20:11 by sengle           ###   ########.fr       */
+/*   Updated: 2019/07/21 22:27:36 by sko              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	print_sudoku(int **board);
 **	main() returns 0 upon success, otherwise 1.
 */
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	int	**board;
 

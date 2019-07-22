@@ -6,7 +6,7 @@
 /*   By: sengle <sengle@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:11:38 by sengle            #+#    #+#             */
-/*   Updated: 2019/07/21 21:36:19 by sterlinge        ###   ########.fr       */
+/*   Updated: 2019/07/21 22:05:19 by sko              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 */
 
 /*
-**	valid_sudoku_space called with two-dimensional int array containing current board
-**	row and col to try to plqace try_val value in,
+**	valid_sudoku_space called with two-dimensional int array containing
+**	current board row and col to try to plqace try_val value in,
 **
 **	returns either TRUE (valid space) or FALSE (invalid)
 */
@@ -48,7 +48,8 @@ static int	valid_sudoku_space(int **board, int row, int col, int try_val)
 		col_offset = 0;
 		while (col_offset <= 2)
 		{
-			if (board[row - (row % 3) + offset][col - (col % 3) + col_offset] == try_val)
+			if (board[row - (row % 3) + offset][col - (col % 3) + col_offset] \
+				== try_val)
 				return (FALSE);
 			col_offset++;
 		}
@@ -80,7 +81,6 @@ static int	valid_sudoku_space(int **board, int row, int col, int try_val)
 **
 **		static helper functions also contained in this file will be used, such
 **		as: most_populated_row(int **board), most_populated_col(int **board),
-**
 */
 
 int			solve_sudoku(int **board, int validated_spaces)
