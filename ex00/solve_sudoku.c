@@ -6,7 +6,7 @@
 /*   By: sengle <sengle@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:11:38 by sengle            #+#    #+#             */
-/*   Updated: 2019/07/21 17:54:25 by sengle           ###   ########.fr       */
+/*   Updated: 2019/07/21 21:36:19 by sterlinge        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,62 +23,9 @@
 **	returns 1 if the board is valid and 0 if it is not
 */
 
-#ifdef TEMP_OFF
-static int	is_valid_sudoku(int **board)
-{
-	int		*b;
-	int		i;
-	int		j;
-	int		k;
-	int		p;
-	int		check;
-
-	p = 0;
-	b = (int *)malloc((COLS * sizeof(int)));
-	i = 0;
-	while (i < 3)
-	{
-		j = 0;
-		while (j < COLS)
-		{
-			p = 0;
-			while (p < ROWS)
-				b[p++] = 0;
-			k = 0;
-// this inner while loop can be put in a helper function for max 25 lines rule
-			while (k < COLS)
-			{
-				check = 0;
-				// check row
-				if (i == 0)
-					check = board[j][k];
-				// check column
-				else if (i == 1)
-					check = board[k][j];
-				// 3x3 grid
-				else
-					check = board[j / COLS * COLS + k / COLS][j % COLS * COLS + k % COLS];
-				if (check == 0)
-				{
-					k++;
-					continue ;
-				}
-				if (b[check - 1] == 1)
-					return (FAIL);
-				b[check - 1] = 1;
-				k++;
-			}
-			j++;
-		}
-		i++;
-	}
-	return (SUCCESS);
-}
-#endif
-
 /*
-**	solve_sudoku called with two-dimensional int array containing initial board
-**
+**	valid_sudoku_space called with two-dimensional int array containing current board
+**	row and col to try to plqace try_val value in,
 **
 **	returns either TRUE (valid space) or FALSE (invalid)
 */
@@ -109,7 +56,6 @@ static int	valid_sudoku_space(int **board, int row, int col, int try_val)
 	}
 	return (TRUE);
 }
-
 
 /*
 **	solve_sudoku is a recursive function called with a two-dimensional int array
@@ -166,6 +112,8 @@ int			solve_sudoku(int **board, int validated_spaces)
 }
 
 /*
+**	Implementation Note:
+**
 **	The algorithm could be optimized by always trying to solve the row or column
 **	that has the least empty zeroes first. In the project example the algo could
 **	first try to solve column 9,2,0,8,5,0,0,0,4 and/or 0,0,6,4,0,3,0,9,7
