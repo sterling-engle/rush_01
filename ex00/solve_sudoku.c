@@ -6,7 +6,7 @@
 /*   By: sengle <sengle@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:11:38 by sengle            #+#    #+#             */
-/*   Updated: 2019/07/21 21:36:19 by sterlinge        ###   ########.fr       */
+/*   Updated: 2019/07/23 11:17:13 by sengle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,8 @@
 #include "sudoku.h"
 
 /*
-**	is_valid_sudoku called with a 2D int array representing initial board
-**
-**		1. allocate b, one Sudoku row
-**		2. main while loop checks row, column, and 3x3 grids
-**
-**	returns 1 if the board is valid and 0 if it is not
-*/
-
-/*
-**	valid_sudoku_space called with two-dimensional int array containing current board
-**	row and col to try to plqace try_val value in,
+**	valid_sudoku_space called with two-dimensional int array containing current
+**	board row and col to try to place try_val value in,
 **
 **	returns either TRUE (valid space) or FALSE (invalid)
 */
@@ -74,13 +65,6 @@ static int	valid_sudoku_space(int **board, int row, int col, int try_val)
 **		{ 4, 7, 0, 0, 0, 0, 0, 0, 0 }
 **
 **		It returns SUCCESS (0) if a solution is found, else FAIL (1)
-**
-**
-**		A copy of the board is used to try solutions?
-**
-**		static helper functions also contained in this file will be used, such
-**		as: most_populated_row(int **board), most_populated_col(int **board),
-**
 */
 
 int			solve_sudoku(int **board, int validated_spaces)
