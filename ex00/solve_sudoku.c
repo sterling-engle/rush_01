@@ -6,7 +6,7 @@
 /*   By: sengle <sengle@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:11:38 by sengle            #+#    #+#             */
-/*   Updated: 2019/07/23 11:17:13 by sengle           ###   ########.fr       */
+/*   Updated: 2019/08/16 11:28:13 by sterlinge        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 /*
 **	valid_sudoku_space called with two-dimensional int array containing current
 **	board row and col to try to place try_val value in,
+**
+**		1. allocate b, one Sudoku row
+**		2. main while loop checks row, column, and 3x3 grids
 **
 **	returns either TRUE (valid space) or FALSE (invalid)
 */
@@ -39,7 +42,8 @@ static int	valid_sudoku_space(int **board, int row, int col, int try_val)
 		col_offset = 0;
 		while (col_offset <= 2)
 		{
-			if (board[row - (row % 3) + offset][col - (col % 3) + col_offset] == try_val)
+			if (board[row - (row % 3) + offset][col - (col % 3) + col_offset] \
+				== try_val)
 				return (FALSE);
 			col_offset++;
 		}
